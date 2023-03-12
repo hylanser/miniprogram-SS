@@ -2,7 +2,7 @@
   <view>
     <!-- 搜索组件 -->
     <my-search @click="gotoSearch"></my-search>
-    
+
     <view class="scroll-view-container">
       <!-- 左侧滑动区域 -->
       <scroll-view class="left-scroll-view" scroll-y="true" :style="{height: wh + 'px'}">
@@ -33,7 +33,12 @@
 </template>
 
 <script>
+  // 导入自己封装的 mixin 模块
+  import badgeMix from '@/mixins/tabbar-badge.js'
+
   export default {
+    // 将 badgeMix 混入到当前的页面中进行使用
+    mixins: [badgeMix],
     data() {
       return {
         // 当前设备可用高度
@@ -72,14 +77,14 @@
         this.active = i
         // 为二级分类列表重新赋值
         this.cateLevel2 = this.cateList[i].children
-        
+
         this.scrollTop = this.scrollTop ? 0 : 1
       },
       // 跳转到商品列表页面
       gotoGoodsList(item3) {
         uni.navigateTo({
-            url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
-          })
+          url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
+        })
       },
       // 跳转到搜索页面
       gotoSearch() {
