@@ -19,7 +19,7 @@
         <image :src="item.image_src" class="nav-img"></image>
       </view>
     </view>
-    
+
     <!-- 楼层区域 -->
     <view class="floor-list">
       <!-- 楼层 item 项 -->
@@ -43,15 +43,20 @@
         </view>
       </view>
     </view>
-</view>
+  </view>
 
-  
+
 
 
 </template>
 
 <script>
+  // 导入自己封装的 mixin 模块
+  import badgeMix from '@/mixins/tabbar-badge.js'
+
   export default {
+    // 将 badgeMix 混入到当前的页面中进行使用
+    mixins: [badgeMix],
     data() {
       return {
         // 轮播图数据列表
