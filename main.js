@@ -31,7 +31,7 @@ import {
 uni.$http = $http
 
 //请求根路径
-$http.baseUrl = 'http://api-hmugo-web.itheima.net'
+$http.baseUrl = 'https://api-hmugo-web.itheima.net'
 // 请求拦截器：请求开始之前做一些事情
 $http.beforeRequest = function(option) {
   uni.showLoading({
