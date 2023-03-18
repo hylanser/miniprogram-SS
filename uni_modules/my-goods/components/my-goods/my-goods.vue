@@ -22,6 +22,9 @@
 </template>
 
 <script>
+  // 导入自己封装的 mixin 模块
+  import badgeMix from '@/mixins/tabbar-badge.js'
+
   export default {
     // 定义 props 属性，用来接收外界传递到当前组件的数据
     props: {

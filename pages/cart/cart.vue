@@ -16,7 +16,7 @@
       <block v-for="(goods, i) in cart" :key="i">
         <!-- uni-swipe-action-item 可以为其子节点提供滑动操作的效果。需要通过 options 属性来指定操作按钮的配置信息 -->
         <uni-swipe-action-item :right-options="options" @click="swipeActionClickHandler(goods)">
-          <my-goods :goods="goods" :show-radio="true" :show-num="true" @radio-change="radioChangeHandler"></my-goods>
+          <my-goods :goods="goods" :show-radio="true" :show-num="true" @radio-change="radioChangeHandler" @num-change="numberChangeHandler"></my-goods>
         </uni-swipe-action-item>
       </block>
     </uni-swipe-action>
