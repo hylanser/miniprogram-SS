@@ -15,32 +15,35 @@
         <!-- 商品价格 -->
         <view class="goods-price">￥{{goods.goods_price.toFixed(2)}}</view>
         <!-- 商品数量 -->
-        <uni-number-box :min="1" :value="goods.goods_count" @change="numChangeHandler" v-if="showNum"></uni-number-box>
+        <uni-number-box :min="1" :value="goods.goods_count" v-if="showNum" @change="numChangeHandler"></uni-number-box>
       </view>
     </view>
   </view>
 </template>
 
 <script>
+  // 导入自己封装的 mixin 模块
+  import badgeMix from '@/mixins/tabbar-badge.js'
+
   export default {
     // 定义 props 属性，用来接收外界传递到当前组件的数据
     props: {
       // 商品的信息对象
       goods: {
         type: Object,
-        defaul: {},
+        default: {}
       },
       // 是否展示图片左侧的 radio
       showRadio: {
         type: Boolean,
         // 如果外界没有指定 show-radio 属性的值，则默认不展示 radio 组件
-        default: false,
+        default: false
       },
       // 是否展示价格右侧的 NumberBox 组件
       showNum: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
     data() {
       return {
