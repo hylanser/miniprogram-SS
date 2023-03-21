@@ -102,12 +102,13 @@
 
     .left-scroll-view {
       width: 120px;
-
+      
       .left-scroll-view-item {
         background-color: #F7F7F7;
         line-height: 60px;
         text-align: center;
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: bolder;
 
         // 激活项的样式
         &.active {
@@ -120,7 +121,7 @@
             display: block;
             width: 3px;
             height: 30px;
-            background-color: #c00000;
+            background-color: #82AAE3;
             position: absolute;
             left: 0;
             top: 50%;
@@ -134,7 +135,7 @@
       background-color: white;
 
       .cate-lv2-title {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
         text-align: center;
         padding: 15px 0;
@@ -157,7 +158,7 @@
           }
 
           text {
-            font-size: 12px;
+            font-size: 14px;
           }
         }
       }

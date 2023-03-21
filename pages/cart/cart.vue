@@ -1,14 +1,16 @@
 <template>
   <view class="cart-container" v-if="cart.length !== 0">
+    <!-- 搜索组件 -->
+    <my-search @click="gotoSearch"></my-search>
     <!-- 收货地址组件 -->
-    <my-address></my-address>
+    <!-- <my-address></my-address> -->
     <!-- 购物车商品列表的标题区域 -->
-    <view class="cart-title">
+    <!-- <view class="cart-title"> -->
       <!-- 左侧的图标 -->
-      <uni-icons type="cart" size="18"></uni-icons>
+      <!-- <uni-icons type="cart" size="18"></uni-icons> -->
       <!-- 描述文本 -->
-      <text class="cart-title-text">购物车</text>
-    </view>
+      <!-- <text class="cart-title-text">购物车</text> -->
+    <!-- </view> -->
 
     <!-- 商品列表区域 -->
     <!-- uni-swipe-action 是最外层包裹性质的容器 -->
@@ -53,7 +55,8 @@
         options: [{
           text: '删除', // 显示的文本内容
           style: {
-            backgroundColor: '#C00000' // 按钮的背景颜色
+            backgroundColor: '#FEDEFF' ,// 按钮的背景颜色
+            color: '#FFFFFF'
           }
         }]
       };
@@ -71,6 +74,12 @@
       // 点击了滑动操作按钮
       swipeActionClickHandler(goods) {
         this.removeGoodsById(goods.goods_id)
+      },
+      // 跳转到搜索页面
+      gotoSearch() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
       }
     }
   }
@@ -106,7 +115,7 @@
     }
 
     .tip-text {
-      font-size: 12px;
+      font-size: 14px;
       color: gray;
       margin-top: 15px;
     }

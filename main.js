@@ -32,6 +32,7 @@ uni.$http = $http
 
 //请求根路径
 $http.baseUrl = 'https://api-hmugo-web.itheima.net'
+//$http.baseUrl = 'https://www.showdoc.com.cn/128719739414963'
 // 请求拦截器：请求开始之前做一些事情
 $http.beforeRequest = function(option) {
   uni.showLoading({

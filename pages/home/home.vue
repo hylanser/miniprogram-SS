@@ -16,38 +16,10 @@
     <!-- 分类导航区域 -->
     <view class="nav-list">
       <view class="nav-item" v-for="(item, i) in navList" :key="i" @click="navClickHandler(item)">
-        <image :src="item.image_src" class="nav-img"></image>
-      </view>
-    </view>
-
-    <!-- 楼层区域 -->
-    <view class="floor-list">
-      <!-- 楼层 item 项 -->
-      <view class="floor-item" v-for="(item, i) in floorList" :key="i">
-        <!-- 楼层标题 -->
-        <image :src="item.floor_title.image_src" class="floor-title"></image>
-        <!-- 楼层图片区域 -->
-        <view class="floor-img-box">
-          <!-- 左侧大图片盒子 -->
-          <navigator class="left-img-box" :url="item.product_list[0].url">
-            <image :src="item.product_list[0].image_src" :style="{width: item.product_list[0].image_width + 'rpx'}"
-              mode="widthFix"></image>
-          </navigator>
-          <!-- 右侧四个小盒子 -->
-          <view class="right-img-box">
-            <navigator class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" :url="item2.url">
-              <image v-if="i2 !== 0" :src="item2.image_src" :style="{width: item2.image_width + 'rpx'}" mode="widthFix">
-              </image>
-            </navigator>
-          </view>
-        </view>
+        <image :src="item" class="nav-img"></image>
       </view>
     </view>
   </view>
-
-
-
-
 </template>
 
 <script>
@@ -72,8 +44,6 @@
       this.getSwiperList()
       // 获取导航列表数据
       this.getNavList()
-      // 获取楼层数据
-      this.getFloorList()
     },
     methods: {
       // 3. 获取轮播图数据的方法
@@ -89,36 +59,23 @@
         uni.$showMsg('数据请求成功！')
       },
       async getNavList() {
-        const {
+        /* const {
           data: res
         } = await uni.$http.get('/api/public/v1/home/catitems')
         if (res.meta.status !== 200) return uni.$showMsg()
-        this.navList = res.message
+        this.navList = res.message */
+        /* const files = require.context("@/static/cate",true,/\.*\/jpg|jpeg|png$/).keys();
+        files.forEech((e) => {
+          navList.push(require("../static/cate" + e.slice(1)));
+        });
+        this.navList = navList */
       },
-
       navClickHandler(item) {
         if (item.name == '分类') {
           uni.switchTab({
             url: '/pages/cate/cate'
           })
         }
-      },
-
-      // 获取楼层列表数据
-      async getFloorList() {
-        const {
-          data: res
-        } = await uni.$http.get('/api/public/v1/home/floordata')
-        if (res.meta.status !== 200) return uni.$showMsg()
-
-        // 通过双层 forEach 循环，处理 URL 地址
-        res.message.forEach(floor => {
-          floor.product_list.forEach(prod => {
-            prod.url = '/subpkg/goods_list/goods_list?' + prod.navigator_url.split('?')[1]
-          })
-        })
-
-        this.floorList = res.message
       },
       gotoSearch() {
         uni.navigateTo({
