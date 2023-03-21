@@ -89,23 +89,26 @@
         // 商品详情对象
         goods_info: {},
         // 左侧按钮组的配置对象
-        options: [{
-          icon: 'shop',
-          text: '店铺'
-        }, {
-          icon: 'cart',
-          text: '购物车',
-          info: 0
-        }],
+        options: [
+          /*{
+                    icon: 'shop',
+                    text: '店铺'
+                  }, */
+          {
+            icon: 'cart',
+            text: '购物车',
+            info: 0,
+          }
+        ],
         // 右侧按钮组的配置对象
         buttonGroup: [{
             text: '加入购物车',
-            backgroundColor: '#ff0000',
+            backgroundColor: '#82AAE3',
             color: '#fff'
           },
           {
             text: '立即购买',
-            backgroundColor: '#ffa200',
+            backgroundColor: '#91D8E4',
             color: '#fff'
           }
         ]
@@ -200,7 +203,7 @@
     padding-right: 0;
 
     .price {
-      color: #c00000;
+      color: red;
       font-size: 18px;
       margin: 10px 0;
     }

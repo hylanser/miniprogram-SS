@@ -3,7 +3,7 @@
   <view class="my-settle-container">
     <!-- 全选区域 -->
     <label class="radio" @click="changeAllState">
-      <radio color="#C00000" :checked="isFullCheck" /><text>全选</text>
+      <radio color="#91D8E4" :checked="isFullCheck" /><text>全选</text>
     </label>
 
     <!-- 合计区域 -->
@@ -12,15 +12,16 @@
     </view>
 
     <!-- 结算按钮 -->
-    <view class="btn-settle">结算({{checkedCount}})</view>
+    <view class="btn-settle" @click="settlement">结算({{checkedCount}})</view>
   </view>
 </template>
 
 <script>
-  // 1. 按需导入 mapMutations 辅助函数
+  // 按需从 vuex 中导入辅助函数
   import {
     mapGetters,
-    mapMutations
+    mapMutations,
+    mapState
   } from 'vuex'
 
   export default {
@@ -30,6 +31,10 @@
     computed: {
       // 1. 将 total 映射到当前组件中
       ...mapGetters('m_cart', ['total', 'checkedCount', 'checkedGoodsAmount']),
+      // addstr 是详细的收货地址
+      ...mapGetters('m_user', ['addstr']),
+      // token 是用户登录成功之后的 token 字符串
+      ...mapState('m_user', ['token']),
       // 2. 是否全选
       isFullCheck() {
         return this.total === this.checkedCount
@@ -43,6 +48,17 @@
         // 修改购物车中所有商品的选中状态
         // !this.isFullCheck 表示：当前全选按钮的状态取反之后，就是最新的勾选状态
         this.updateAllGoodsState(!this.isFullCheck)
+      },
+      // 点击了结算按钮
+      settlement() {
+        // 1. 先判断是否勾选了要结算的商品
+        if (!this.checkedCount) return uni.$showMsg('请选择要结算的商品！')
+
+        // 2. 再判断用户是否选择了收货地址
+        /* if (!this.addstr) return uni.$showMsg('请选择收货地址！') */
+
+        // 3. 最后判断用户是否登录了
+        if (!this.token) return uni.$showMsg('请先登录！')
       }
     },
   }
@@ -69,13 +85,16 @@
     }
 
     .amount {
-      color: #c00000;
+      font-size: 18px;
+      font-weight: bolder;
+      color: black;
     }
 
     .btn-settle {
+      font-size: 18px;
       height: 50px;
       min-width: 100px;
-      background-color: #c00000;
+      background-color: #E96479;
       color: white;
       line-height: 50px;
       text-align: center;

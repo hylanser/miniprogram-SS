@@ -4,7 +4,7 @@
     <view class="goods-item-left">
       <!-- 使用 v-if 指令控制 radio 组件的显示与隐藏 -->
       <!-- 存储在购物车中的商品，包含 goods_state 属性，表示商品的勾选状态 -->
-      <radio :checked="goods.goods_state" color="#C00000" v-if="showRadio" @click="radioClickHandler"></radio>
+      <radio :checked="goods.goods_state" color="#91D8E4" v-if="showRadio" @click="radioClickHandler"></radio>
       <image :src="goods.goods_small_logo || defaultPic" class="goods-pic"></image>
     </view>
     <!-- 商品右侧信息区域 -->
@@ -112,7 +112,8 @@
 
       .goods-price {
         font-size: 16px;
-        color: #c00000;
+        font-weight: bolder;
+        color: black;
       }
 
       .goods-info-box {
