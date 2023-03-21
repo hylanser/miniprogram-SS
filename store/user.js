@@ -8,7 +8,9 @@ export default {
     // 登录成功之后的 token 字符串
     token: uni.getStorageSync('token') || '',
     // 用户的基本信息
-    userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}')
+    userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}'),
+    // 重定向的 object 对象 { openType, from }
+    redirectInfo: null
   }),
   // 方法
   mutations: {
@@ -41,6 +43,10 @@ export default {
     // 将 token 字符串持久化存储到本地
     saveTokenToStorage(state) {
       uni.setStorageSync('token', state.token)
+    },
+    // 更新重定向的信息对象
+    updateRedirectInfo(state, info) {
+      state.redirectInfo = info
     }
   },
   getters: {
